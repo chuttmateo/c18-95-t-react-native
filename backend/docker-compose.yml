@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: nest-app
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=example
+      - DATABASE_NAME=nestjs
+    depends_on: 
+      - db
+
+  db:
+    container_name: nest-db
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: app
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./db-data:/var/lib/mysql
