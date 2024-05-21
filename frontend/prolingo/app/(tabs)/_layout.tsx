@@ -10,19 +10,25 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarShowLabel: false
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: 'white',
+        tabBarInactiveTintColor: 'black',
+        tabBarStyle: {
+          backgroundColor: '#1e90ff',
+          height:60
+        }
       }}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Profile',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon  color={color} icon={ icons.user} />
+            <TabBarIcon color={color} icon={icons.user} />
           ),
         }}
       />
       <Tabs.Screen
-        name="map" 
+        name="map"
         options={{
           title: 'Path',
           tabBarIcon: ({ color, focused }) => (
