@@ -1,12 +1,25 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const ranking = () => {
   return (
-    <View>
-      <Text>ranking</Text>
-    </View>
-  )
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Text style={styles.header}>Rank</Text>
+      </View>
+    </SafeAreaView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  header: {
+    fontSize: 50,
+    color: "#daa520",
+  },
+});
 
 export default ranking
