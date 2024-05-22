@@ -1,14 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Option } from './entities/option.entity';
 import { CreateOptionDto } from './dto/create-option.dto';
+import { Game } from './entities/game.entity';
 
 @Injectable()
 export class OptionsService {
   constructor(
     @InjectRepository(Option)
     private optionRepository: Repository<Option>,
+    @InjectRepository(Game)
+    private gameRepository: Repository<Game>,
   ) {}
 
   // async findAll(): Promise<Game[]> {
@@ -22,8 +25,14 @@ export class OptionsService {
   //   });
   // }
 
-  async create(body: CreateOptionDto) {
-    const option = this.optionRepository.create(body);
-    return this.optionRepository.save(option);
+  async saveOption(gameId: number, body: CreateOptionDto) {
+    const game = await this.gameRepository.findOne({ where: { id: gameId } });
+    if (game) {
+      const option = await this.optionRepository.create(body);
+      option.game = game;
+      return this.optionRepository.save(option);
+    } else {
+      throw new NotFoundException('Game not found: ' + gameId);
+    }
   }
 }
