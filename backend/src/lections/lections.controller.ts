@@ -9,8 +9,9 @@ import {
 } from '@nestjs/common';
 import { LectionsService } from './lections.service';
 import { CreateLectionDto } from './dto/create-lection.dto';
+import { ApiTags } from '@nestjs/swagger';
 // import { UpdateLectionDto } from './dto/update-lection.dto';
-
+@ApiTags('lections')
 @Controller('lections')
 export class LectionsController {
   constructor(private readonly lectionsService: LectionsService) {}
