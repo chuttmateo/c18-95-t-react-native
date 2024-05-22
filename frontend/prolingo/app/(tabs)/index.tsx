@@ -40,12 +40,12 @@ const Profile = () => {
               {isEdit && (
                 <View style={styles.usernameContainer}>
                   <Image source={profile.arrowLeft} style={styles.iconEdit} />
-                  <TextInput style={styles.header}>Pool-7</TextInput>
+                  <TextInput style={styles.header} value='Pool-7' />
                   <Image source={profile.arrowRight} style={styles.iconEdit} />
                 </View>)}
               {!isEdit && (
                 <View style={styles.usernameContainer}>
-                  <TextInput editable={false} style={styles.header}>Pool-7</TextInput>
+                  <TextInput editable={false} style={styles.header} value='Pool-7' />
                 </View>)}
 
               <View style={styles.scoreContainer}>
