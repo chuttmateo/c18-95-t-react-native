@@ -1,6 +1,4 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
-
 import { TabBarIcon } from '@/components/TabBarIcon';
 import icons from '@/constants/icons'
 
@@ -13,6 +11,7 @@ export default function TabLayout() {
         tabBarShowLabel: false,
         tabBarActiveTintColor: 'white',
         tabBarInactiveTintColor: 'black',
+        tabBarHideOnKeyboard:false  ,
         tabBarStyle: {
           backgroundColor: '#1e90ff',
           height:60
