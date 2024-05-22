@@ -1,0 +1,152 @@
+{
+    "title": "Nivel Principiantes: Fundamentos de Programación",
+    "description": "Este nivel cubre los fundamentos básicos de la programación incluyendo variables, estructuras de control, funciones, y conceptos básicos de la programación orientada a objetos.",
+    "image": "https://example.com/images/beginner_level.png",
+    "lections": [
+      {
+        "title": "Introducción a la Programación",
+        "description": "Esta lección cubre los conceptos básicos de la programación y su importancia."
+      },
+      {
+        "title": "Variables y Tipos de Datos",
+        "description": "Esta lección explica qué son las variables y los diferentes tipos de datos que se utilizan en programación."
+      },
+      {
+        "title": "Estructuras de Control",
+        "description": "En esta lección se abordan las estructuras de control como condicionales y bucles."
+      },
+      {
+        "title": "Funciones y Procedimientos",
+        "description": "Esta lección introduce el concepto de funciones y procedimientos y cómo se utilizan en programación."
+      },
+      {
+        "title": "Conceptos Básicos de Programación Orientada a Objetos",
+        "description": "Esta lección cubre los conceptos básicos de la programación orientada a objetos incluyendo clases y objetos."
+      }
+    ],
+    "games": [
+      {
+        "type": "multiple-choice",
+        "question": "¿Qué es una variable?",
+        "description": "Selecciona la opción correcta que define una variable.",
+        "options": [
+          {
+            "value": "Un espacio en memoria para almacenar datos",
+            "correct": true
+          },
+          {
+            "value": "Una instrucción de control",
+            "correct": false
+          },
+          {
+            "value": "Una función",
+            "correct": false
+          }
+        ]
+      },
+      {
+        "type": "complete-the-word",
+        "question": "Un espacio en memoria para almacenar datos se llama: ___",
+        "description": "Completa la palabra correcta para definir una variable.",
+        "options": [
+          {
+            "value": "variable",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "type": "type-the-word",
+        "question": "Escribe la palabra que define un espacio en memoria para almacenar datos.",
+        "description": "Escribe la palabra correcta.",
+        "options": [
+          {
+            "value": "variable",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "¿Cuál de los siguientes es un tipo de dato?",
+        "description": "Selecciona la opción correcta que es un tipo de dato.",
+        "options": [
+          {
+            "value": "int",
+            "correct": true
+          },
+          {
+            "value": "if-else",
+            "correct": false
+          },
+          {
+            "value": "función",
+            "correct": false
+          }
+        ]
+      },
+      {
+        "type": "complete-the-word",
+        "question": "Un tipo de dato entero se llama: ___",
+        "description": "Completa la palabra correcta para definir un tipo de dato entero.",
+        "options": [
+          {
+            "value": "int",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "type": "type-the-word",
+        "question": "Escribe la palabra que define un tipo de dato entero.",
+        "description": "Escribe la palabra correcta.",
+        "options": [
+          {
+            "value": "int",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "¿Cuál de las siguientes es una estructura de control?",
+        "description": "Selecciona la opción correcta que define una estructura de control.",
+        "options": [
+          {
+            "value": "if-else",
+            "correct": true
+          },
+          {
+            "value": "variable",
+            "correct": false
+          },
+          {
+            "value": "función",
+            "correct": false
+          }
+        ]
+      },
+      {
+        "type": "complete-the-word",
+        "question": "Una estructura de control que permite decisiones condicionales se llama: ___",
+        "description": "Completa la palabra correcta para definir una estructura de control condicional.",
+        "options": [
+          {
+            "value": "if-else",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "type": "type-the-word",
+        "question": "Escribe la palabra que define una estructura de control condicional.",
+        "description": "Escribe la palabra correcta.",
+        "options": [
+          {
+            "value": "if-else",
+            "correct": true
+          }
+        ]
+      }
+    ]
+  }
