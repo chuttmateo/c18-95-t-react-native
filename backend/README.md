@@ -25,3 +25,10 @@ ProLingo is an innovative application designed to facilitate learning the Englis
     npm start
    ```
 
+
+## Schema para levels en mysql
+
+![Captura desde 2024-05-22 09-10-02](https://github.com/No-Country/c18-95-t-react-native/assets/101225151/bce6ac45-c4f8-4941-aae5-537461e8b512)
+
+
+
