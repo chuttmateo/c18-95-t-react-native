@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { GamesService } from './games.service';
 import { CreateGameDto } from './dto/create-game.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { CreateOptionDto } from './dto/create-option.dto';
 import { OptionsService } from './options.service';
 
@@ -10,7 +10,7 @@ import { OptionsService } from './options.service';
 export class GamesController {
   constructor(
     private readonly gamesService: GamesService,
-    private optionsService: OptionsService,
+    private readonly optionsService: OptionsService,
   ) {}
 
   @Get()
@@ -28,6 +28,10 @@ export class GamesController {
     return this.gamesService.create(game);
   }
   @Post(':id/option')
+  @ApiParam({ name: 'id', type: 'number' })
+  @ApiOperation({
+    summary: 'Create an option for a game',
+  })
   async createReview(@Param('id') id: string, @Body() body: CreateOptionDto) {
     return this.optionsService.saveOption(+id, body);
   }

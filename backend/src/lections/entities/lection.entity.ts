@@ -1,5 +1,12 @@
 import { Level } from 'src/levels/entities/level.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Sublection } from 'src/sublections/entities/sublection.entity';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('lections')
 export class Lection {
@@ -12,6 +19,13 @@ export class Lection {
   @Column()
   description: string;
 
-  @ManyToOne(() => Level, (level) => level.lections)
+  @ManyToOne(() => Level, (level) => level.lections, {
+    onDelete: 'CASCADE',
+  })
   level: Level;
+
+  @OneToMany(() => Sublection, (sublection) => sublection.lection, {
+    cascade: true,
+  })
+  sublections: Sublection[];
 }

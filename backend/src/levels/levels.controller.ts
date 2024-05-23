@@ -5,7 +5,7 @@ import {
   Body,
   // Patch,
   Param,
-  // Delete,
+  Delete,
 } from '@nestjs/common';
 import { LevelsService } from './levels.service';
 import { CreateLevelDto } from './dto/create-level.dto';
@@ -46,8 +46,8 @@ export class LevelsController {
   //   return this.levelsService.update(+id, updateLevelDto);
   // }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.levelsService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.levelsService.remove(+id);
+  }
 }

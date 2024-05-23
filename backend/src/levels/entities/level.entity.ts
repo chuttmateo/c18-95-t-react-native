@@ -16,9 +16,14 @@ export class Level {
   @Column()
   image: string;
 
-  @OneToMany(() => Lection, (lection) => lection.level)
+  @OneToMany(() => Lection, (lection) => lection.level, {
+    cascade: true,
+  })
   lections: Lection[];
 
-  @OneToMany(() => Game, (game) => game.level)
+  @OneToMany(() => Game, (game) => game.level, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
   games: Game[];
 }

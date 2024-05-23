@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Game } from './entities/game.entity';
@@ -36,5 +36,11 @@ export class GamesService {
       options: await Promise.all(options),
     });
     return this.gameRepository.save(game);
+  }
+
+  async remove(id: number) {
+    const game = await this.findOne(id);
+    if (!game) throw new NotFoundException('Game not found: ' + id);
+    return this.gameRepository.remove(game);
   }
 }
