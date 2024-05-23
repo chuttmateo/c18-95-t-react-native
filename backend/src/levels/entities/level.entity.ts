@@ -13,9 +13,6 @@ export class Level {
   @Column()
   description: string;
 
-  @Column()
-  image: string;
-
   @OneToMany(() => Lection, (lection) => lection.level, {
     cascade: true,
   })
