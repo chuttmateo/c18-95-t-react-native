@@ -5,14 +5,12 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Lection } from './entities/lection.entity';
 import { Repository } from 'typeorm';
 import { CreateLectionDto } from './dto/create-lection.dto';
-import { SublectionsService } from 'src/sublections/sublections.service';
 
 @Injectable()
 export class LectionsService {
   constructor(
     @InjectRepository(Lection)
     private readonly repository: Repository<Lection>,
-    private readonly sublectionsService: SublectionsService,
   ) {}
 
   create(body: CreateLectionDto) {
@@ -24,11 +22,13 @@ export class LectionsService {
     return this.repository.find({ relations: ['sublections'] });
   }
 
-  findOne(id: number) {
-    return this.repository.findOne({
+  async findOne(id: number) {
+    const lection = await this.repository.findOne({
       where: { id },
       relations: ['sublections'],
     });
+    if (!lection) throw new NotFoundException('Lection not found: ' + id);
+    return lection;
   }
 
   // update(id: number, updateLectionDto: UpdateLectionDto) {
@@ -37,7 +37,6 @@ export class LectionsService {
 
   async remove(id: number) {
     const lection = await this.findOne(id);
-    if (!lection) throw new NotFoundException('Lection not found: ' + id);
     return this.repository.remove(lection);
   }
 }
