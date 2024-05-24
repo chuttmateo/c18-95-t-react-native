@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+} from '@nestjs/common';
 import { GamesService } from './games.service';
 import { CreateGameDto } from './dto/create-game.dto';
 import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
@@ -19,8 +26,8 @@ export class GamesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.gamesService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.gamesService.findOne(id);
   }
 
   @Post()
@@ -32,7 +39,10 @@ export class GamesController {
   @ApiOperation({
     summary: 'Create an option for a game',
   })
-  async createReview(@Param('id') id: string, @Body() body: CreateOptionDto) {
-    return this.optionsService.saveOption(+id, body);
+  async createReview(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() body: CreateOptionDto,
+  ) {
+    return this.optionsService.saveOption(id, body);
   }
 }

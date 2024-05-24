@@ -34,6 +34,5 @@ export class SublectionsService {
   async remove(id: number) {
     const sublection = await this.findOne(id);
     return this.repository.remove(sublection);
-    //return this.repository.delete({ id });
   }
 }
