@@ -12,6 +12,8 @@ export class Option {
   @Column()
   correct: boolean;
 
-  @ManyToOne(() => Game, (game) => game.options)
+  @ManyToOne(() => Game, (game) => game.options, {
+    onDelete: 'CASCADE',
+  })
   game: Game;
 }

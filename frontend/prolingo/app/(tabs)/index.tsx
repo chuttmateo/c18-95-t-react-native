@@ -33,7 +33,7 @@ const Profile = () => {
 
           <View style={styles.userData}>
             <ImageBackground
-              source={profile.userData}
+              source={isEdit ? profile.editUserData : profile.userData}
               resizeMode='contain'
               style={styles.backgroundUserData}
             >
@@ -50,18 +50,18 @@ const Profile = () => {
 
               <View style={styles.scoreContainer}>
                 <View style={styles.baseContainer}>
-                  <Text>MAPAS DESBLOQUEADOS</Text>
-                  <Text>1</Text>
+                  <Text style={styles.text}>Mapas desbloqueados</Text>
+                  <Text style={styles.text}>1</Text>
                 </View>
 
                 <View style={styles.baseContainer}>
-                  <Text>MAPAS TERMINADOS</Text>
-                  <Text>1</Text>
+                  <Text style={styles.text}>Mapas terminados</Text>
+                  <Text style={styles.text}>1</Text>
                 </View>
 
                 <View style={styles.baseContainer}>
-                  <Text>PUNTOS</Text>
-                  <Text>1</Text>
+                  <Text style={styles.text}>Puntos</Text>
+                  <Text style={styles.text}>1</Text>
                 </View>
 
                 <View style={styles.baseContainer}>
@@ -127,7 +127,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: "red",
     textAlign: 'center',
-    maxWidth: 160
+    maxWidth: 160,
+  },
+  text: {
+    fontFamily: 'Satisfy',
+    fontSize: 20
   },
   background: {
     height: Dimensions.get('window').height,

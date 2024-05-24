@@ -9,10 +9,20 @@ import { Lection } from 'src/lections/entities/lection.entity';
 import { Game } from 'src/games/entities/game.entity';
 import { Option } from 'src/games/entities/option.entity';
 import { OptionsService } from 'src/games/options.service';
+import { SublectionsService } from 'src/sublections/sublections.service';
+import { Sublection } from 'src/sublections/entities/sublection.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Level, Lection, Game, Option])],
+  imports: [
+    TypeOrmModule.forFeature([Level, Lection, Game, Option, Sublection]),
+  ],
   controllers: [LevelsController],
-  providers: [LevelsService, LectionsService, GamesService, OptionsService],
+  providers: [
+    LevelsService,
+    LectionsService,
+    GamesService,
+    OptionsService,
+    SublectionsService,
+  ],
 })
 export class LevelsModule {}

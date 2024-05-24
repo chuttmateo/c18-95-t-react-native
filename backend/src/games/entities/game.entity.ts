@@ -22,9 +22,13 @@ export class Game {
   @Column()
   description: string;
 
-  @OneToMany(() => Option, (option) => option.game)
+  @OneToMany(() => Option, (option) => option.game, {
+    cascade: true,
+  })
   options: Option[];
 
-  @ManyToOne(() => Level, (level) => level.lections)
+  @ManyToOne(() => Level, (level) => level.lections, {
+    onDelete: 'CASCADE',
+  })
   level: Level;
 }
