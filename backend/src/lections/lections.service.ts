@@ -1,36 +1,43 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 // import { CreateLectionDto } from './dto/create-lection.dto';
 // import { UpdateLectionDto } from './dto/update-lection.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Lection } from './entities/lection.entity';
 import { Repository } from 'typeorm';
 import { CreateLectionDto } from './dto/create-lection.dto';
+import { SublectionsService } from 'src/sublections/sublections.service';
 
 @Injectable()
 export class LectionsService {
   constructor(
     @InjectRepository(Lection)
-    private lectionRepository: Repository<Lection>,
+    private readonly repository: Repository<Lection>,
+    private readonly sublectionsService: SublectionsService,
   ) {}
 
   create(body: CreateLectionDto) {
-    const lection = this.lectionRepository.create(body);
-    return this.lectionRepository.save(lection);
+    const lection = this.repository.create(body);
+    return this.repository.save(lection);
   }
 
   findAll() {
-    return this.lectionRepository.find();
+    return this.repository.find({ relations: ['sublections'] });
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} lection`;
+    return this.repository.findOne({
+      where: { id },
+      relations: ['sublections'],
+    });
   }
 
   // update(id: number, updateLectionDto: UpdateLectionDto) {
   //   return `This action updates a #${id} lection`;
   // }
 
-  remove(id: number) {
-    return `This action removes a #${id} lection`;
+  async remove(id: number) {
+    const lection = await this.findOne(id);
+    if (!lection) throw new NotFoundException('Lection not found: ' + id);
+    return this.repository.remove(lection);
   }
 }
