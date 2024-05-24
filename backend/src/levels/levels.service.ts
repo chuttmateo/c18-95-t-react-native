@@ -39,11 +39,13 @@ export class LevelsService {
     });
   }
 
-  findOne(id: number): Promise<Level> {
-    return this.repository.findOne({
+  async findOne(id: number): Promise<Level> {
+    const level = await this.repository.findOne({
       where: { id },
       relations: ['lections', 'games', 'games.options', 'lections.sublections'],
     });
+    if (!level) throw new NotFoundException('Level not found: ' + id);
+    return level;
   }
 
   // update(id: number, updateLevelDto: UpdateLevelDto) {
@@ -52,7 +54,6 @@ export class LevelsService {
 
   async remove(id: number) {
     const level = await this.findOne(id);
-    if (!level) throw new NotFoundException('Level not found: ' + id);
     return this.repository.remove(level);
   }
 }

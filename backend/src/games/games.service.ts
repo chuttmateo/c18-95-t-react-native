@@ -19,10 +19,12 @@ export class GamesService {
   }
 
   async findOne(id: number): Promise<Game> {
-    return this.gameRepository.findOne({
+    const game = await this.gameRepository.findOne({
       where: { id },
       relations: ['options'],
     });
+    if (!game) throw new NotFoundException('Game not found: ' + id);
+    return game;
   }
 
   async create(body: CreateGameDto) {
@@ -40,7 +42,6 @@ export class GamesService {
 
   async remove(id: number) {
     const game = await this.findOne(id);
-    if (!game) throw new NotFoundException('Game not found: ' + id);
     return this.gameRepository.remove(game);
   }
 }
