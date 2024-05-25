@@ -20,8 +20,10 @@ export class SublectionsService {
     return this.repository.find();
   }
 
-  findOne(id: number) {
-    return this.repository.findOne({ where: { id } });
+  async findOne(id: number) {
+    const sublection = await this.repository.findOne({ where: { id } });
+    if (!sublection) throw new NotFoundException('Sublection not found: ' + id);
+    return sublection;
   }
 
   update(id: number, updateSublectionDto: UpdateSublectionDto) {
@@ -31,8 +33,6 @@ export class SublectionsService {
 
   async remove(id: number) {
     const sublection = await this.findOne(id);
-    if (!sublection) throw new NotFoundException('Sublection not found: ' + id);
     return this.repository.remove(sublection);
-    //return this.repository.delete({ id });
   }
 }

@@ -6,6 +6,7 @@ import {
   // Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { LevelsService } from './levels.service';
 import { CreateLevelDto } from './dto/create-level.dto';
@@ -37,8 +38,8 @@ export class LevelsController {
   @ApiOperation({
     summary: 'Get one level from database with games options',
   })
-  findOne(@Param('id') id: string) {
-    return this.levelsService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.levelsService.findOne(id);
   }
 
   // @Patch(':id')
@@ -47,7 +48,7 @@ export class LevelsController {
   // }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.levelsService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.levelsService.remove(id);
   }
 }

@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { SublectionsService } from './sublections.service';
 import { CreateSublectionDto } from './dto/create-sublection.dto';
@@ -26,20 +27,20 @@ export class SublectionsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.sublectionsService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.sublectionsService.findOne(id);
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateSublectionDto: UpdateSublectionDto,
   ) {
-    return this.sublectionsService.update(+id, updateSublectionDto);
+    return this.sublectionsService.update(id, updateSublectionDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.sublectionsService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.sublectionsService.remove(id);
   }
 }

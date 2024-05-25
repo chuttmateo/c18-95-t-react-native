@@ -6,6 +6,7 @@ import {
   // Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { LectionsService } from './lections.service';
 import { CreateLectionDto } from './dto/create-lection.dto';
@@ -27,8 +28,8 @@ export class LectionsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.lectionsService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.lectionsService.findOne(id);
   }
 
   // @Patch(':id')
@@ -37,7 +38,7 @@ export class LectionsController {
   // }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.lectionsService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.lectionsService.remove(id);
   }
 }
