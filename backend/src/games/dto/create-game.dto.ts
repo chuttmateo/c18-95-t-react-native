@@ -1,4 +1,4 @@
-import { CreateOptionDto } from './create-option.dto';
+import { CreateOptionDto } from '../../options/dto/create-option.dto';
 import { IsArray, IsString } from 'class-validator';
 
 export class CreateGameDto {

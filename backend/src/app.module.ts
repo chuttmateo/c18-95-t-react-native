@@ -4,6 +4,7 @@ import { GamesModule } from './games/games.module';
 import { LectionsModule } from './lections/lections.module';
 import { LevelsModule } from './levels/levels.module';
 import { SublectionsModule } from './sublections/sublections.module';
+import { OptionsModule } from './options/options.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { SublectionsModule } from './sublections/sublections.module';
     LectionsModule,
     LevelsModule,
     SublectionsModule,
+    OptionsModule,
   ],
 })
 export class AppModule {}

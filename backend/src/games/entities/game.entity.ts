@@ -5,7 +5,7 @@ import {
   OneToMany,
   ManyToOne,
 } from 'typeorm';
-import { Option } from './option.entity';
+import { Option } from '../../options/entities/option.entity';
 import { Level } from 'src/levels/entities/level.entity';
 
 @Entity('games')

@@ -9,8 +9,8 @@ import {
 import { GamesService } from './games.service';
 import { CreateGameDto } from './dto/create-game.dto';
 import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
-import { CreateOptionDto } from './dto/create-option.dto';
-import { OptionsService } from './options.service';
+import { CreateOptionDto } from '../options/dto/create-option.dto';
+import { OptionsService } from '../options/options.service';
 
 @ApiTags('games')
 @Controller('games')
@@ -39,7 +39,7 @@ export class GamesController {
   @ApiOperation({
     summary: 'Create an option for a game',
   })
-  async createReview(
+  async createOption(
     @Param('id', ParseIntPipe) id: number,
     @Body() body: CreateOptionDto,
   ) {
