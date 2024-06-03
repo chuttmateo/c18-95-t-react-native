@@ -9,10 +9,13 @@ import {
 import React from "react";
 import level from "../constants/level";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const LevelScreen = () => {
-   const navigator = useNavigation();
+  const navigator = useNavigation();
+  const route = useRoute();
+  const { item } = route.params;
+  // console.log('EL item:\n', item);
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground source={level.bg} resizeMode="contain" style={styles.bg}>
@@ -29,15 +32,14 @@ const LevelScreen = () => {
             <Text style={styles.header}>Nivel 1</Text>
           </ImageBackground>
           <View style={styles.introduction}>
-            <Text style={styles.text}>!Palabras</Text>
             <Text style={styles.text}>
-              Te enseñaremos algunas palabras muy usadas.
+             {item.description}
             </Text>
-            <Text style={styles.text}>
+            {/* <Text style={styles.text}>
               Serán necesarias para armar oraciones más adelante.
-            </Text>
+            </Text> */}
             <TouchableOpacity
-              onPress={() => navigator.navigate("sublevel")}
+              onPress={() => navigator.navigate("sublevel", {items: item})}
               style={styles.btn_cnt}
             >
               <Image source={level.arrow} resizeMode="contain" />
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
     fontFamily: "Satisfy",
   },
   text: {
-    fontSize: 28,
+    fontSize: 25, 
     fontFamily: "Satisfy",
     textAlign: "center",
   },
