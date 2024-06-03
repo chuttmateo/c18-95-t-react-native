@@ -1,9 +1,18 @@
-import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import level from "../constants/level";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
 
 const LevelScreen = () => {
+   const navigator = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground source={level.bg} resizeMode="contain" style={styles.bg}>
@@ -27,9 +36,11 @@ const LevelScreen = () => {
             <Text style={styles.text}>
               Serán necesarias para armar oraciones más adelante.
             </Text>
-            <TouchableOpacity style={styles.btn_cnt}>
-              <Image source={level.arrow}
-              resizeMode="contain"/>
+            <TouchableOpacity
+              onPress={() => navigator.navigate("sublevel")}
+              style={styles.btn_cnt}
+            >
+              <Image source={level.arrow} resizeMode="contain" />
             </TouchableOpacity>
           </View>
         </ImageBackground>
@@ -77,8 +88,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   btn_cnt: {
-    alignItems:'center',
+    alignItems: "center",
     // backgroundColor: 'red',
     // opacity: 0.5
-  }
-});  
+  },
+});
