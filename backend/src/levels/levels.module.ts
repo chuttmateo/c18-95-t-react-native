@@ -7,8 +7,8 @@ import { LectionsService } from 'src/lections/lections.service';
 import { GamesService } from 'src/games/games.service';
 import { Lection } from 'src/lections/entities/lection.entity';
 import { Game } from 'src/games/entities/game.entity';
-import { Option } from 'src/games/entities/option.entity';
-import { OptionsService } from 'src/games/options.service';
+import { Option } from 'src/options/entities/option.entity';
+import { OptionsService } from 'src/options/options.service';
 import { SublectionsService } from 'src/sublections/sublections.service';
 import { Sublection } from 'src/sublections/entities/sublection.entity';
 

@@ -2,8 +2,10 @@ import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, Dimen
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import map from '@/constants/map';
+import { useNavigation } from '@react-navigation/native';
 
 const explore = () => {
+  const navigator = useNavigation();
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -38,9 +40,9 @@ const explore = () => {
                   style={styles.path}
                   source={map.path}
                 >
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => navigator.navigate('level')}>
                     <Image style={styles.iconInMap} source={map.blueCircle} />
-                  </TouchableOpacity>
+                  </TouchableOpacity> 
                   <TouchableOpacity>
                     <Image style={styles.iconInMap} source={map.blueSymbol} />
                   </TouchableOpacity>
