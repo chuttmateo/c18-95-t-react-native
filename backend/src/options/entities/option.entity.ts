@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { Game } from './game.entity';
+import { Game } from '../../games/entities/game.entity';
 
 @Entity('options')
 export class Option {
