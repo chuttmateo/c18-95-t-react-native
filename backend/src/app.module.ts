@@ -5,6 +5,9 @@ import { LectionsModule } from './lections/lections.module';
 import { LevelsModule } from './levels/levels.module';
 import { SublectionsModule } from './sublections/sublections.module';
 import { OptionsModule } from './options/options.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -23,6 +26,11 @@ import { OptionsModule } from './options/options.module';
     LevelsModule,
     SublectionsModule,
     OptionsModule,
+    AuthModule,
+    UsersModule,
   ],
+  controllers: [
+    AppController
+  ]
 })
 export class AppModule {}
