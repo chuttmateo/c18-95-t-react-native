@@ -12,7 +12,9 @@ export class GamesService {
   ) {}
 
   async findAll(): Promise<Game[]> {
-    return this.gameRepository.find({ relations: ['options'] });
+    return this.gameRepository.find({
+      //relations: ['options'],
+    });
   }
 
   async findOne(id: number): Promise<Game> {

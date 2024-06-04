@@ -28,7 +28,7 @@ export class SublectionsService {
 
   update(id: number, updateSublectionDto: UpdateSublectionDto) {
     //IMPLEMENT
-    return `This action updates a #${id} sublection ${updateSublectionDto.description}`;
+    return ` IMPLEMENT: update sublection ${id} with ${updateSublectionDto}`;
   }
 
   async remove(id: number) {

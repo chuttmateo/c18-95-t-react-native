@@ -19,7 +19,9 @@ export class LectionsService {
   }
 
   findAll() {
-    return this.repository.find({ relations: ['sublections'] });
+    return this.repository.find({
+      //relations: ['sublections'],
+    });
   }
 
   async findOne(id: number) {
