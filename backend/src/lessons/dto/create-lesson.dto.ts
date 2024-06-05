@@ -1,11 +1,11 @@
 import { IsArray, IsString } from 'class-validator';
-import { CreateSublectionDto } from 'src/sublessons/dto/create-sublesson.dto';
+import { CreateSublessonDto } from 'src/sublessons/dto/create-sublesson.dto';
 
-export class CreateLectionDto {
+export class CreateLessonDto {
   @IsString()
   title: string;
   @IsString()
   description: string;
   @IsArray()
-  sublections: CreateSublectionDto[];
+  sublessons: CreateSublessonDto[];
 }

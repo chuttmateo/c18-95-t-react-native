@@ -1,4 +1,4 @@
 import { PartialType } from '@nestjs/swagger';
-import { CreateSublectionDto } from './create-sublesson.dto';
+import { CreateSublessonDto } from './create-sublesson.dto';
 
-export class UpdateSublectionDto extends PartialType(CreateSublectionDto) {}
+export class UpdateSublectionDto extends PartialType(CreateSublessonDto) {}

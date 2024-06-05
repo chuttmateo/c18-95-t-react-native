@@ -1,4 +1,4 @@
 import { PartialType } from '@nestjs/mapped-types';
-import { CreateLectionDto } from './create-lesson.dto';
+import { CreateLessonDto } from './create-lesson.dto';
 
-export class UpdateLectionDto extends PartialType(CreateLectionDto) {}
+export class UpdateLectionDto extends PartialType(CreateLessonDto) {}

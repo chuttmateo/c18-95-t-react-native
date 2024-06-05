@@ -4,7 +4,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Lesson } from './entities/lesson.entity';
 import { Repository } from 'typeorm';
-import { CreateLectionDto } from './dto/create-lesson.dto';
+import { CreateLessonDto } from './dto/create-lesson.dto';
 
 @Injectable()
 export class LessonsService {
@@ -13,7 +13,7 @@ export class LessonsService {
     private readonly repository: Repository<Lesson>,
   ) {}
 
-  create(body: CreateLectionDto) {
+  create(body: CreateLessonDto) {
     const lection = this.repository.create(body);
     return this.repository.save(lection);
   }

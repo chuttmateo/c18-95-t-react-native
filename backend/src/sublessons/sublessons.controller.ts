@@ -9,7 +9,7 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 import { SublessonsService } from './sublessons.service';
-import { CreateSublectionDto } from './dto/create-sublesson.dto';
+import { CreateSublessonDto } from './dto/create-sublesson.dto';
 import { UpdateSublectionDto } from './dto/update-sublesson.dto';
 
 @Controller('sublessons')
@@ -17,7 +17,7 @@ export class SublessonsController {
   constructor(private readonly sublessonsService: SublessonsService) {}
 
   @Post()
-  create(@Body() createSublectionDto: CreateSublectionDto) {
+  create(@Body() createSublectionDto: CreateSublessonDto) {
     return this.sublessonsService.create(createSublectionDto);
   }
 

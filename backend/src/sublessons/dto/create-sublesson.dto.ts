@@ -1,6 +1,6 @@
 import { IsString } from 'class-validator';
 
-export class CreateSublectionDto {
+export class CreateSublessonDto {
   @IsString()
   title: string;
   @IsString()

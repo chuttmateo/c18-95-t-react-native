@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateSublectionDto } from './dto/create-sublesson.dto';
+import { CreateSublessonDto } from './dto/create-sublesson.dto';
 import { UpdateSublectionDto } from './dto/update-sublesson.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -11,8 +11,8 @@ export class SublessonsService {
     @InjectRepository(Sublesson)
     private readonly repository: Repository<Sublesson>,
   ) {}
-  create(createSublectionDto: CreateSublectionDto) {
-    const sublesson = this.repository.create(createSublectionDto);
+  create(CreateSublessonDto: CreateSublessonDto) {
+    const sublesson = this.repository.create(CreateSublessonDto);
     return this.repository.save(sublesson);
   }
 
