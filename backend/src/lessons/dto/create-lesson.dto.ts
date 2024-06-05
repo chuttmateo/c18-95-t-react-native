@@ -1,5 +1,5 @@
 import { IsArray, IsString } from 'class-validator';
-import { CreateSublectionDto } from 'src/sublections/dto/create-sublection.dto';
+import { CreateSublectionDto } from 'src/sublessons/dto/create-sublesson.dto';
 
 export class CreateLectionDto {
   @IsString()

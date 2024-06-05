@@ -1,5 +1,5 @@
 import { Game } from 'src/games/entities/game.entity';
-import { Lection } from 'src/lections/entities/lection.entity';
+import { Lesson } from 'src/lessons/entities/lesson.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('levels')
@@ -13,10 +13,10 @@ export class Level {
   @Column()
   description: string;
 
-  @OneToMany(() => Lection, (lection) => lection.level, {
+  @OneToMany(() => Lesson, (lesson) => lesson.level, {
     cascade: true,
   })
-  lections: Lection[];
+  lessons: Lesson[];
 
   @OneToMany(() => Game, (game) => game.level, {
     cascade: true,

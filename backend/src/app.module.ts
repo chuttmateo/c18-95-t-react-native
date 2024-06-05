@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GamesModule } from './games/games.module';
-import { LectionsModule } from './lections/lections.module';
+import { LectionsModule } from './lessons/lesson.module';
 import { LevelsModule } from './levels/levels.module';
-import { SublectionsModule } from './sublections/sublections.module';
+import { SublectionsModule } from './sublessons/sublessons.module';
 import { OptionsModule } from './options/options.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
@@ -39,8 +39,6 @@ import configuration from './config/configuration';
     AuthModule,
     UsersModule,
   ],
-  controllers: [
-    AppController
-  ]
+  controllers: [AppController],
 })
 export class AppModule {}

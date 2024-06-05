@@ -27,7 +27,7 @@ export class Game {
   })
   options: Option[];
 
-  @ManyToOne(() => Level, (level) => level.lections, {
+  @ManyToOne(() => Level, (level) => level.lessons, {
     onDelete: 'CASCADE',
   })
   level: Level;

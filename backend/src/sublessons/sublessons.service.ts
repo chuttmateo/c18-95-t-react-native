@@ -1,19 +1,19 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateSublectionDto } from './dto/create-sublection.dto';
-import { UpdateSublectionDto } from './dto/update-sublection.dto';
+import { CreateSublectionDto } from './dto/create-sublesson.dto';
+import { UpdateSublectionDto } from './dto/update-sublesson.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Sublection } from './entities/sublection.entity';
+import { Sublesson } from './entities/sublesson.entity';
 
 @Injectable()
-export class SublectionsService {
+export class SublessonsService {
   constructor(
-    @InjectRepository(Sublection)
-    private readonly repository: Repository<Sublection>,
+    @InjectRepository(Sublesson)
+    private readonly repository: Repository<Sublesson>,
   ) {}
   create(createSublectionDto: CreateSublectionDto) {
-    const sublection = this.repository.create(createSublectionDto);
-    return this.repository.save(sublection);
+    const sublesson = this.repository.create(createSublectionDto);
+    return this.repository.save(sublesson);
   }
 
   findAll() {
@@ -21,9 +21,9 @@ export class SublectionsService {
   }
 
   async findOne(id: number) {
-    const sublection = await this.repository.findOne({ where: { id } });
-    if (!sublection) throw new NotFoundException('Sublection not found: ' + id);
-    return sublection;
+    const sublesson = await this.repository.findOne({ where: { id } });
+    if (!sublesson) throw new NotFoundException('Sublesson not found: ' + id);
+    return sublesson;
   }
 
   update(id: number, updateSublectionDto: UpdateSublectionDto) {
