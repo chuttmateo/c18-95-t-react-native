@@ -17,15 +17,13 @@ export class LevelsService {
   }
 
   findAll(): Promise<Level[]> {
-    return this.repository.find({
-      relations: ['lections', 'games'],
-    });
+    return this.repository.find();
   }
 
   async findOne(id: number): Promise<Level> {
     const level = await this.repository.findOne({
       where: { id },
-      relations: ['lections', 'games', 'games.options', 'lections.sublections'],
+      relations: ['lections', 'games'],
     });
     if (!level) throw new NotFoundException('Level not found: ' + id);
     return level;
