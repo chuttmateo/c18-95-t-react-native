@@ -12,20 +12,14 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import map from "@/constants/map";
 import { useNavigation } from "@react-navigation/native";
-import axios from "axios";
+import getAllLevels from "../services/level";
 
 const explore = () => {
   const navigator = useNavigation();
   const [levels, setLevels] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get("http://192.168.1.7:3000/levels");
-      const data = response.data;
-      setLevels(data);
-      console.log(data);
-    };
-    fetchData();
+    getAllLevels(setLevels);
   }, []);
 
   return (
