@@ -8,17 +8,17 @@ import {
   Delete,
   ParseIntPipe,
 } from '@nestjs/common';
-import { LectionsService } from './lections.service';
-import { CreateLectionDto } from './dto/create-lection.dto';
+import { LessonsService } from './lesson.service';
+import { CreateLessonDto } from './dto/create-lesson.dto';
 import { ApiTags } from '@nestjs/swagger';
 // import { UpdateLectionDto } from './dto/update-lection.dto';
-@ApiTags('lections')
-@Controller('lections')
+@ApiTags('lessons')
+@Controller('lessons')
 export class LectionsController {
-  constructor(private readonly lectionsService: LectionsService) {}
+  constructor(private readonly lectionsService: LessonsService) {}
 
   @Post()
-  create(@Body() createLectionDto: CreateLectionDto) {
+  create(@Body() createLectionDto: CreateLessonDto) {
     return this.lectionsService.create(createLectionDto);
   }
 

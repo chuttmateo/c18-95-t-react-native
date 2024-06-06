@@ -1,8 +1,8 @@
-import { Lection } from 'src/lections/entities/lection.entity';
+import { Lesson } from 'src/lessons/entities/lesson.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('sublections')
-export class Sublection {
+@Entity('sublessons')
+export class Sublesson {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -12,8 +12,8 @@ export class Sublection {
   @Column()
   description: string;
 
-  @ManyToOne(() => Lection, (lection) => lection.sublections, {
+  @ManyToOne(() => Lesson, (lesson) => lesson.sublessons, {
     onDelete: 'CASCADE',
   })
-  lection: Lection;
+  lesson: Lesson;
 }
