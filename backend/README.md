@@ -30,6 +30,13 @@ ProLingo is an innovative application designed to facilitate learning the Englis
 
 ![image](https://github.com/No-Country/c18-95-t-react-native/assets/101225151/053db144-87b9-4f3e-b4bb-2d7a7de2c10e)
 
+## HOW TO USE SEED.MJS?
+
+1. Delete the last database.
+2. Create a new one with the same name 'nestjs'.
+3. Start the server to create tables with 'npm run start:dev'.
+4. Execute the seed from the backend folder using 'node src/scripts/seed.mjs'.
+
 
 
 
