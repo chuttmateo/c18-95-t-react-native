@@ -22,8 +22,6 @@ const LevelScreen = () => {
     getLevel(index, setNivel);
   }, []);
 
-  
-  
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground source={level.bg} resizeMode="contain" style={styles.bg}>
@@ -41,9 +39,6 @@ const LevelScreen = () => {
           </ImageBackground>
           <View style={styles.introduction}>
             <Text style={styles.text}>{nivel.description}</Text>
-            {/* <Text style={styles.text}>
-              Serán necesarias para armar oraciones más adelante.
-            </Text> */}
             <TouchableOpacity
               onPress={() => navigator.navigate("sublevel", { lections: nivel.lections })}
               style={styles.btn_cnt}
