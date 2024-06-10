@@ -5,10 +5,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useRoute } from "@react-navigation/native";
+import { getLection } from "./services/lection";
 
-const Page = () => (
+const Page = ({item}) => (
   <View
     style={{
       flex: 1,
@@ -31,24 +33,30 @@ const Page = () => (
         backgroundColor: "white",
       }}
     >
-      <Text style={{ textAlign: "center" }}>TITLE</Text>
+      <Text style={{ textAlign: "center" }}>{item.title}</Text>
       <Text style={{ textAlign: "center" }}>TITLE TRADUCTION</Text>
     </View>
     <View style={{ flex: 4, justifyContent: "center" }}>
-      <Text style={{ textAlign: "center" }}>BODY 1</Text>
-      <Text style={{ textAlign: "center" }}>BODY 2</Text>
-      <Text style={{ textAlign: "center" }}>BODY 3</Text>
-      <Text style={{ textAlign: "center" }}>BODY 4</Text>
+      <Text style={{ textAlign: "center" }}>{item.description}</Text>
+      
     </View>
     
   </View>
 );
 const teory = () => {
+  const route = useRoute();
+  const { lectionID } = route.params;
+  const [subLessons, setSubLessons] = useState([]);
+
+  useEffect(() => {
+    getLection(lectionID, setSubLessons);
+  }, [])
+  
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FlatList
-        data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
-        renderItem={({ item }) => <Page />}
+        data={subLessons}
+        renderItem={({ item }) => <Page item={item} />}
       />
     </SafeAreaView>
   );
