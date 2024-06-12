@@ -72,16 +72,16 @@ const explore = () => {
                     renderItem={({ item }) => (
                       <>
                         <TouchableOpacity
-                          onPress={() =>
-                            navigator.navigate("level", { index: item.id })
-                          }
+                          onPress={() => navigator.navigate("level", { item })}
                         >
                           <Image
                             style={styles.iconInMap}
                             source={map.blueCircle}
                           />
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={() => navigator.navigate("game", { item })}
+                        >
                           <Image
                             style={styles.iconInMap}
                             source={map.blueSymbol}
