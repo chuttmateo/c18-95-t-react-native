@@ -32,11 +32,5 @@ ProLingo is an innovative application designed to facilitate learning the Englis
 
 ## HOW TO USE SEED.MJS?
 
-1. Delete the last database.
-2. Create a new one with the same name 'nestjs'.
-3. Start the server to create tables with 'npm run start:dev'.
-4. Execute the seed from the backend folder using 'node src/scripts/seed.mjs'.
-
-
-
-
+1. Start the server to create tables with 'npm run start:dev'.
+2. Execute the seed from the backend folder using 'node src/scripts/seed.mjs'.
