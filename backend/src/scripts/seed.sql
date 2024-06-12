@@ -66,3 +66,13 @@ INSERT INTO options (id, value, correct, gameId) VALUES
 (13, 'función', false, 7),
 (14, 'if-else', true, 8),
 (15, 'if-else', true, 9);
+
+INSERT INTO user (id, username, password) VALUES
+(1, 'MATEO', '234'),
+(2, 'MELISSA', 'adfad'),
+(3, 'SHARIF', '123423');
+
+INSERT INTO progress (id, userId, score) VALUES
+(1, 1, 10),
+(2, 2, 120),
+(3, 3, 890);
