@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import map from "@/constants/map";
 import { useNavigation } from "@react-navigation/native";
-import getAllLevels from "../services/level";
+import { getAllLevels } from "../services/level";
 
 const explore = () => {
   const navigator = useNavigation();
@@ -21,6 +21,11 @@ const explore = () => {
   useEffect(() => {
     getAllLevels(setLevels);
   }, []);
+
+  useEffect(() => {
+    // getAllLevels(setLevels);
+    console.log("LEVELS :", levels);
+  }, [levels]);
 
   return (
     <SafeAreaView>

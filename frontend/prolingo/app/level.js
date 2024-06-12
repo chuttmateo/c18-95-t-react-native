@@ -6,16 +6,24 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import level from "../constants/level";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { getLevel } from "./services/level";
 
 const LevelScreen = () => {
   const navigator = useNavigation();
   const route = useRoute();
-  const { item } = route.params;
-  // console.log('EL item:\n', item);
+  const { index } = route.params;
+  const [nivel, setNivel] = useState([]);
+
+  useEffect(() => {
+    getLevel(index, setNivel);
+  }, []);
+
+  
+  
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground source={level.bg} resizeMode="contain" style={styles.bg}>
@@ -32,14 +40,12 @@ const LevelScreen = () => {
             <Text style={styles.header}>Nivel 1</Text>
           </ImageBackground>
           <View style={styles.introduction}>
-            <Text style={styles.text}>
-             {item.description}
-            </Text>
+            <Text style={styles.text}>{nivel.description}</Text>
             {/* <Text style={styles.text}>
               Serán necesarias para armar oraciones más adelante.
             </Text> */}
             <TouchableOpacity
-              onPress={() => navigator.navigate("sublevel", {items: item})}
+              onPress={() => navigator.navigate("sublevel", { lections: nivel.lections })}
               style={styles.btn_cnt}
             >
               <Image source={level.arrow} resizeMode="contain" />
@@ -85,7 +91,7 @@ const styles = StyleSheet.create({
     fontFamily: "Satisfy",
   },
   text: {
-    fontSize: 25, 
+    fontSize: 25,
     fontFamily: "Satisfy",
     textAlign: "center",
   },

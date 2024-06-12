@@ -24,7 +24,7 @@ const ListItem = ({ item }) => {
       }}
     >
       <TouchableOpacity
-        onPress={() => navigator.navigate("teory")}
+        onPress={() => navigator.navigate("teory", {lectionID: item.id})}
         style={{
           height: 70,
           ...defaultStyles.container,
@@ -44,15 +44,15 @@ const ListItem = ({ item }) => {
 
 const sublevel = () => {
   const route = useRoute();
-  const { items } = route.params;
-  console.log("ESTas Lecciones:\n", items);
+  const { lections } = route.params;
+  // console.log("ESTas Lecciones:\n", items);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View
         style={{ flex: 1, borderColor: "black", borderWidth: 2, margin: "5%" }}
       >
         <FlatList
-          data={items.lections}
+          data={lections}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <ListItem item={item} />}
         />
