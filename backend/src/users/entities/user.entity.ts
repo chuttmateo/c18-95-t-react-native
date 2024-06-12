@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Progress } from 'src/progress/entities/progress.entity';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('user')
 export class User {
@@ -10,4 +11,9 @@ export class User {
 
   @Column()
   password: string;
+
+  @OneToOne(() => Progress, (progress) => progress.user, {
+    cascade: true,
+  })
+  progress: Progress;
 }

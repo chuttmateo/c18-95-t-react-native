@@ -9,6 +9,8 @@ import { OptionsModule } from './options/options.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { AppController } from './app.controller';
+import { ProgressModule } from './progress/progress.module';
+import { RankModule } from './rank/rank.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -38,6 +40,8 @@ import configuration from './config/configuration';
     OptionsModule,
     AuthModule,
     UsersModule,
+    ProgressModule,
+    RankModule,
   ],
   controllers: [AppController],
 })
