@@ -35,7 +35,7 @@ const LevelScreen = () => {
           <ImageBackground
             source={level.header_bg}
             style={styles.header_bg}
-            resizeMode="stretch"
+            resizeMode="contain"
           >
             <Text style={styles.header}>Nivel 1</Text>
           </ImageBackground>
@@ -45,7 +45,7 @@ const LevelScreen = () => {
               Serán necesarias para armar oraciones más adelante.
             </Text> */}
             <TouchableOpacity
-              onPress={() => navigator.navigate("sublevel", { lections: nivel.lections })}
+              onPress={() => navigator.navigate("sublevel", { lections: nivel.lessons })}
               style={styles.btn_cnt}
             >
               <Image source={level.arrow} resizeMode="contain" />
