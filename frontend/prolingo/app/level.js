@@ -6,13 +6,24 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import level from "../constants/level";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { getLevel } from "./services/level";
 
 const LevelScreen = () => {
-   const navigator = useNavigation();
+  const navigator = useNavigation();
+  const route = useRoute();
+  const { index } = route.params;
+  const [nivel, setNivel] = useState([]);
+
+  useEffect(() => {
+    getLevel(index, setNivel);
+  }, []);
+
+  
+  
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground source={level.bg} resizeMode="contain" style={styles.bg}>
@@ -24,20 +35,17 @@ const LevelScreen = () => {
           <ImageBackground
             source={level.header_bg}
             style={styles.header_bg}
-            resizeMode="stretch"
+            resizeMode="contain"
           >
             <Text style={styles.header}>Nivel 1</Text>
           </ImageBackground>
           <View style={styles.introduction}>
-            <Text style={styles.text}>!Palabras</Text>
-            <Text style={styles.text}>
-              Te enseñaremos algunas palabras muy usadas.
-            </Text>
-            <Text style={styles.text}>
+            <Text style={styles.text}>{nivel.description}</Text>
+            {/* <Text style={styles.text}>
               Serán necesarias para armar oraciones más adelante.
-            </Text>
+            </Text> */}
             <TouchableOpacity
-              onPress={() => navigator.navigate("sublevel")}
+              onPress={() => navigator.navigate("sublevel", { lections: nivel.lessons })}
               style={styles.btn_cnt}
             >
               <Image source={level.arrow} resizeMode="contain" />
@@ -83,7 +91,7 @@ const styles = StyleSheet.create({
     fontFamily: "Satisfy",
   },
   text: {
-    fontSize: 28,
+    fontSize: 25,
     fontFamily: "Satisfy",
     textAlign: "center",
   },

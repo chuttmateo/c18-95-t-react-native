@@ -8,10 +8,11 @@ import {
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { defaultStyles } from "../styles/index";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const ListItem = ({ item }) => {
   const navigator = useNavigation();
+  console.log('sublecciones : ', item)
   return (
     <View
       style={{
@@ -23,7 +24,7 @@ const ListItem = ({ item }) => {
       }}
     >
       <TouchableOpacity
-        onPress={() => navigator.navigate("teory")}
+        onPress={() => navigator.navigate("teory", {lectionID: item.id})}
         style={{
           height: 70,
           ...defaultStyles.container,
@@ -32,31 +33,26 @@ const ListItem = ({ item }) => {
           borderRadius: 30,
         }}
       >
-        <Text style={{ fontSize: 20, fontWeight: "bold" }}>{item.name}</Text>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>{item.title}</Text>
       </TouchableOpacity>
       <View style={defaultStyles.container}>
-        <Text style={{ fontSize: 30, fontWeight: "bold" }}>{item.order}</Text>
+        <Text style={{ fontSize: 30, fontWeight: "bold" }}>{item.id}</Text>
       </View>
     </View>
   );
 };
 
 const sublevel = () => {
+  const route = useRoute();
+  const { lections } = route.params;
+  // console.log("ESTas Lecciones:\n", items);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View
         style={{ flex: 1, borderColor: "black", borderWidth: 2, margin: "5%" }}
       >
         <FlatList
-          data={[
-            { id: 1, name: "Pronombres", order: 1 },
-            { id: 2, name: "Sustantivos", order: 2 },
-            { id: 3, name: "Adjetivos", order: 3 },
-            { id: 4, name: "Verbos", order: 4 },
-            { id: 5, name: "Artículos", order: 5 },
-            { id: 6, name: "Preposiciones", order: 6 },
-            { id: 7, name: "Adverbios", order: 7 },
-          ]}
+          data={lections}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <ListItem item={item} />}
         />

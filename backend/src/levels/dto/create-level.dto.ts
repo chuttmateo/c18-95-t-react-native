@@ -1,6 +1,6 @@
 import { IsArray, IsString } from 'class-validator';
 import { CreateGameDto } from 'src/games/dto/create-game.dto';
-import { CreateLectionDto } from 'src/lections/dto/create-lection.dto';
+import { CreateLessonDto } from 'src/lessons/dto/create-lesson.dto';
 
 export class CreateLevelDto {
   @IsString()
@@ -8,7 +8,7 @@ export class CreateLevelDto {
   @IsString()
   description: string;
   @IsArray()
-  lections: CreateLectionDto[];
+  lessons: CreateLessonDto[];
   @IsArray()
   games: CreateGameDto[];
 }

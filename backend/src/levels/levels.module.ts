@@ -3,26 +3,24 @@ import { LevelsService } from './levels.service';
 import { LevelsController } from './levels.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Level } from './entities/level.entity';
-import { LectionsService } from 'src/lections/lections.service';
+import { LessonsService } from 'src/lessons/lesson.service';
 import { GamesService } from 'src/games/games.service';
-import { Lection } from 'src/lections/entities/lection.entity';
+import { Lesson } from 'src/lessons/entities/lesson.entity';
 import { Game } from 'src/games/entities/game.entity';
 import { Option } from 'src/options/entities/option.entity';
 import { OptionsService } from 'src/options/options.service';
-import { SublectionsService } from 'src/sublections/sublections.service';
-import { Sublection } from 'src/sublections/entities/sublection.entity';
+import { SublessonsService } from 'src/sublessons/sublessons.service';
+import { Sublesson } from 'src/sublessons/entities/sublesson.entity';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Level, Lection, Game, Option, Sublection]),
-  ],
+  imports: [TypeOrmModule.forFeature([Level, Lesson, Game, Option, Sublesson])],
   controllers: [LevelsController],
   providers: [
     LevelsService,
-    LectionsService,
+    LessonsService,
     GamesService,
     OptionsService,
-    SublectionsService,
+    SublessonsService,
   ],
 })
 export class LevelsModule {}
